@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Louay Zaidi Portfolio</title>
 <meta name="description" content="Louay Zaidi, graphic designer from Tunis. Brand identities, posters, merch, packaging and social media in Arabic, French and English.">
 <meta property="og:type" content="website">
@@ -193,6 +193,40 @@ html[dir="rtl"] .arrows{flex-direction:row-reverse}
 .ticker,.mark,.links,.stats dt{direction:ltr}
 .row .t,.row .s,.v-top h3,.v-meta,.worked li{unicode-bidi:plaintext}
 html[dir="rtl"] .links{text-align:right;align-items:flex-end}
+
+
+/* phones & iPhone */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);overflow-x:hidden}
+button,a{-webkit-tap-highlight-color:transparent}
+.explorer>*{min-width:0}
+.viewer{min-width:0;overflow:hidden}
+.wa-float{bottom:calc(18px + env(safe-area-inset-bottom))}
+.lb{height:100dvh;padding:calc(24px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom))}
+.lb button{top:calc(16px + env(safe-area-inset-top))}
+@media (max-width:860px){
+  .explorer{grid-template-columns:minmax(0,1fr)}
+  .list{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;border-top:0;padding:2px 0 10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .list::-webkit-scrollbar{display:none}
+  .list li{flex:0 0 auto;scroll-snap-align:start}
+  .row{display:flex;flex-direction:column;align-items:flex-start;gap:2px;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;min-width:150px;max-width:220px;background:#fff}
+  .row .n{font-size:11px}
+  .row .t{font-size:22px;white-space:nowrap}
+  .row .s{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
+  .row[aria-current="true"]{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+  .row[aria-current="true"] .t{transform:none}
+  .strip button{height:min(52vh,420px)}
+  .chips{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none;width:100%;padding-bottom:4px}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto}
+  .fan{height:clamp(300px,82vw,420px);margin:0 auto;width:88%}
+  .top nav{gap:14px;font-size:15px}
+  .hero h1{font-size:clamp(54px,15vw,90px)}
+  .so-head .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stats dt{font-size:30px}
+  .worked li{font-size:17px}
+}
+@media (max-width:420px){.v-top h3{font-size:30px}.v-desc{font-size:15px}}
 
 /* about + contact */
 .end{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);padding:clamp(40px,6vw,80px) 0}
@@ -396,7 +430,7 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
     rows.forEach(function(r){r.setAttribute('aria-current',r.dataset.id===id?'true':'false');});
     if(!fromHash){try{history.replaceState(null,'','#'+id);}catch(e){}}
   }
-  rows.forEach(function(r){r.addEventListener('click',function(){show(r.dataset.id);if(window.innerWidth<860)document.getElementById('viewer').scrollIntoView({block:'start'});});});
+  rows.forEach(function(r){r.addEventListener('click',function(){show(r.dataset.id);if(window.innerWidth<860){r.scrollIntoView({inline:'nearest',block:'nearest'});}});});
   function visible(){return rows.filter(function(r){return !r.parentNode.hidden;}).map(function(r){return r.dataset.id;});}
   function step(d){var v=visible();var k=v.indexOf(cur);show(v[(k+d+v.length)%v.length]);}
   document.getElementById('prev').addEventListener('click',function(){step(-1);});

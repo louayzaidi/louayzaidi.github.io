@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Louay Zaidi Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Manrope:wght@400;500;700&amp;family=Reem+Kufi:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: a Sidi Bou wall. Whitewash ground, ink type, one blue door (the arch window), chéchia red for small marks. One screen of work: a project list beside a viewer. */
+  --chalk:#F5F3EE;
+  --ink:#14161B;
+  --muted:#5A5E66;
+  --line:#D9D6CE;
+  --blue:#1747B8;
+  --red:#C3262E;
+  --display:"Anton","Impact","Arial Narrow",sans-serif;
+  --body:"Manrope","Segoe UI",system-ui,sans-serif;
+  --ar:"Reem Kufi","Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--chalk);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+
+/* top */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:14px;font-family:var(--display);font-size:20px;letter-spacing:.03em;text-decoration:none}
+.mark img{height:54px;width:auto}
+.mark i{font-style:normal;color:var(--blue)}
+.top nav{display:flex;gap:20px;font-size:14px;font-weight:500}
+.top nav a{text-decoration:none;color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:clamp(24px,5vw,72px);align-items:center;padding:clamp(16px,3vw,40px) 0 clamp(28px,4vw,48px)}
+.hero h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(60px,10.5vw,150px);line-height:.88;margin:0;letter-spacing:.005em}
+.hero h1 .blue{color:var(--blue)}
+.hero h1 .ar{font-family:var(--ar);font-weight:700;font-size:.42em;color:var(--red);vertical-align:.55em;margin-inline-start:.15em;text-transform:none}
+.lede{font-size:clamp(17px,1.6vw,20px);max-width:40ch;margin:22px 0 0}
+.lede b{font-weight:700}
+.ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;padding:11px 20px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid var(--ink)}
+.btn.primary{background:var(--ink);color:var(--chalk)}
+.btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+
+.fan{position:relative;height:clamp(340px,40vw,500px);width:100%;max-width:460px;justify-self:end}
+.fan img{position:absolute;width:58%;height:auto;border-radius:3px;box-shadow:0 22px 40px -22px rgba(20,22,27,.55);border:6px solid #fff}
+.fan img:nth-child(1){left:0;top:12%;transform:rotate(-7deg)}
+.fan img:nth-child(2){left:21%;top:0;transform:rotate(1.5deg);z-index:2}
+.fan img:nth-child(3){right:0;top:16%;transform:rotate(8deg)}
+/* ticker */
+.ticker{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);overflow:hidden;white-space:nowrap;background:var(--chalk)}
+.ticker div{display:inline-flex;gap:28px;padding:10px 0;font-family:var(--display);font-size:22px;text-transform:uppercase;animation:tick 38s linear infinite}
+.ticker span.ar{font-family:var(--ar);font-weight:700;text-transform:none;font-size:20px}
+.ticker span.dot{color:var(--red)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* work explorer */
+.work{padding:clamp(36px,5vw,64px) 0}
+.work-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.work-head h2{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.5vw,56px);text-transform:uppercase;margin:0;line-height:1}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1.5px solid var(--line);background:none;border-radius:999px;padding:7px 14px;font-size:14px;font-weight:500;cursor:pointer;min-height:36px}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--chalk)}
+.explorer{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,3vw,40px);align-items:start}
+.list{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.list li[hidden]{display:none}
+.row{display:grid;grid-template-columns:34px 1fr;column-gap:10px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 4px;cursor:pointer;align-items:baseline}
+.row .n{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .t{font-family:var(--display);font-size:clamp(24px,2.6vw,34px);text-transform:uppercase;line-height:1.05;transition:color .2s, transform .2s}
+.row .s{grid-column:2;font-size:13px;color:var(--muted)}
+.row:hover .t{color:var(--blue)}
+.row[aria-current="true"] .t{color:var(--blue);transform:translateX(6px)}
+.row[aria-current="true"] .n{color:var(--red);font-weight:700}
+
+.viewer{position:sticky;top:16px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:clamp(16px,2vw,24px)}
+.v-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.v-top h3{font-family:var(--display);font-weight:400;font-size:clamp(30px,3.4vw,44px);text-transform:uppercase;line-height:1;margin:0}
+.v-meta{font-size:13px;color:var(--muted)}
+.v-desc{margin:10px 0 16px;max-width:60ch;font-size:15.5px}
+.v-links{margin:-6px 0 14px;display:flex;gap:16px;flex-wrap:wrap;font-size:14px;font-weight:700}
+.v-links:empty{display:none}
+.v-links a{color:var(--blue)}
+.strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.strip button{flex:0 0 auto;height:clamp(260px,42vh,440px);padding:0;border:0;background:#f1efe9;border-radius:4px;cursor:zoom-in;scroll-snap-align:start;overflow:hidden}
+.strip img{height:100%;width:auto}
+.v-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:6px;font-size:13px;color:var(--muted)}
+.arrows{display:flex;gap:8px}
+.arrows button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--ink);background:none;cursor:pointer;font-size:18px}
+.arrows button:hover{background:var(--ink);color:var(--chalk)}
+
+
+/* social */
+.social{background:var(--ink);color:var(--chalk);padding:clamp(48px,6vw,88px) 0}
+.so-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,56px);align-items:end;margin-bottom:28px}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#FF6B70;margin:0 0 10px}
+.social h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(40px,5.5vw,72px);line-height:.95;margin:0}
+.so-lede{max-width:52ch;margin:16px 0 0;color:#D8D6D0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0}
+.stats div{border-top:2px solid var(--chalk);padding-top:10px}
+.stats dt{font-family:var(--display);font-size:clamp(34px,4vw,52px);line-height:1;color:#fff}
+.stats dd{margin:6px 0 0;font-size:13px;color:#BDBAB2}
+.reels{display:flex;gap:12px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.reel{position:relative;flex:0 0 auto;height:clamp(240px,32vw,340px);padding:0;border:0;border-radius:10px;overflow:hidden;cursor:zoom-in;scroll-snap-align:start;background:#222}
+.reel img{height:100%;width:auto}
+.reel span{position:absolute;top:8px;left:8px;background:rgba(20,22,27,.75);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;padding:3px 8px;border-radius:999px}
+.feeds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.feed{padding:0;border:0;background:#000;cursor:zoom-in;border-radius:6px;overflow:hidden;display:block;width:100%}
+.feed img{width:100%;height:auto;display:block}
+.so-note{font-size:12px;color:#9E9B93;margin:16px 0 0}
+.social :focus-visible{outline-color:#fff}
+@media (max-width:860px){.so-head{grid-template-columns:1fr}.feeds{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr 1fr}}
+
+/* about + contact */
+.end{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);padding:clamp(40px,6vw,80px) 0;border-top:2px solid var(--ink)}
+.end h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(36px,4.5vw,56px);line-height:1;margin:0 0 16px}
+.sig{width:min(240px,60%);height:auto;margin:0 0 20px}
+.end p{max-width:56ch;margin:0 0 12px}
+.svc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.svc li{border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:500}
+.contact h2 span{color:var(--blue)}
+.links{display:flex;flex-direction:column;gap:4px;font-size:clamp(18px,2vw,22px);font-weight:700}
+.links a{text-decoration:none;width:fit-content;border-bottom:2px solid transparent}
+.links a:hover{border-color:var(--blue)}
+.links span{color:var(--muted);font-weight:500}
+footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(12,13,16,.93);display:none;align-items:center;justify-content:center;padding:24px;z-index:20}
+.lb.open{display:flex}
+.lb img{max-height:100%;max-width:100%;object-fit:contain}
+.lb button{position:absolute;top:16px;right:16px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;font-size:22px;cursor:pointer}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .fan{justify-self:center;max-width:380px}
+  .explorer{grid-template-columns:1fr}
+  .viewer{position:static}
+  .end{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="mark" href="#work"><img src="img/logo-ar.png" alt="لؤي الزايدي" width="513" height="434"><span>LOUAY ZAIDI<i>.</i></span></a>
+    <nav aria-label="Sections"><a href="#work">Work</a><a href="#social">Social</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  </div>
+
+  <section class="hero">
+    <div>
+      <h1>Posters,<br>brands <span class="blue">&amp;</span> merch<br>from <span class="blue">Tunis</span><span class="ar" lang="ar">من تونس</span></h1>
+      <p class="lede">I'm <b>Louay Zaidi</b>, a graphic designer working in Arabic, French and English. Brand identities, event campaigns, apparel, social media, and decks that make numbers easy to read.</p>
+      <div class="ctas"><a class="btn primary" href="#work">See the work</a><a class="btn" href="#contact">Get in touch</a></div>
+    </div>
+    <div class="fan" aria-hidden="true">
+      <img src="img/padel-cup.jpg" alt="">
+      <img src="img/caravane-3.jpg" alt="">
+      <img src="img/blu-30.jpg" alt="">
+    </div>
+  </section>
+</div>
+
+<div class="ticker" aria-hidden="true"><div>
+  <span>Brand identity</span><span class="dot">●</span><span>Posters</span><span class="dot">●</span><span>Merch</span><span class="dot">●</span><span>Social media</span><span class="dot">●</span><span>Packaging</span><span class="dot">●</span><span>Decks</span><span class="dot">●</span><span class="ar">عربي</span><span class="dot">●</span><span>Français</span><span class="dot">●</span><span>English</span><span class="dot">●</span>
+  <span>Brand identity</span><span class="dot">●</span><span>Posters</span><span class="dot">●</span><span>Merch</span><span class="dot">●</span><span>Social media</span><span class="dot">●</span><span>Packaging</span><span class="dot">●</span><span>Decks</span><span class="dot">●</span><span class="ar">عربي</span><span class="dot">●</span><span>Français</span><span class="dot">●</span><span>English</span><span class="dot">●</span>
+</div></div>
+
+<div class="wrap">
+  <section class="work" id="work">
+    <div class="work-head">
+      <h2>Work · 12</h2>
+      <div class="chips" role="group" aria-label="Filter projects">
+        <button type="button" class="chip" data-f="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-f="brand" aria-pressed="false">Brands</button>
+        <button type="button" class="chip" data-f="campaign" aria-pressed="false">Campaigns</button>
+        <button type="button" class="chip" data-f="poster" aria-pressed="false">Posters</button>
+        <button type="button" class="chip" data-f="packaging" aria-pressed="false">Packaging</button>
+        <button type="button" class="chip" data-f="merch" aria-pressed="false">Merch</button>
+        <button type="button" class="chip" data-f="deck" aria-pressed="false">Decks</button>
+      </div>
+    </div>
+    <div class="explorer">
+      <ol class="list" id="list"><li data-cat="brand packaging"><button type="button" class="row" data-id="mago" aria-controls="viewer"><span class="n">01</span><span class="t">MAGO</span><span class="s">Brand identity, packaging &amp; brand book</span></button></li><li data-cat="brand merch"><button type="button" class="row" data-id="updown" aria-controls="viewer"><span class="n">02</span><span class="t">Up&amp;Down Tunis</span><span class="s">Streetwear brand</span></button></li><li data-cat="campaign deck"><button type="button" class="row" data-id="ramadan" aria-controls="viewer"><span class="n">03</span><span class="t">Ramadan 2026</span><span class="s">Campaign identity &amp; sponsor deck</span></button></li><li data-cat="poster"><button type="button" class="row" data-id="caravane" aria-controls="viewer"><span class="n">04</span><span class="t">Caravane de santé</span><span class="s">Event poster</span></button></li><li data-cat="campaign poster"><button type="button" class="row" data-id="blu" aria-controls="viewer"><span class="n">05</span><span class="t">Blu Phoenix</span><span class="s">Night market identity</span></button></li><li data-cat="campaign poster"><button type="button" class="row" data-id="padel" aria-controls="viewer"><span class="n">06</span><span class="t">Phoenix Padel</span><span class="s">Tournament campaign</span></button></li><li data-cat="campaign"><button type="button" class="row" data-id="recruitment" aria-controls="viewer"><span class="n">07</span><span class="t">Join the Fam&#x27;</span><span class="s">Recruitment campaign</span></button></li><li data-cat="poster"><button type="button" class="row" data-id="posters" aria-controls="viewer"><span class="n">08</span><span class="t">One-off posters</span><span class="s">Event posters</span></button></li><li data-cat="brand"><button type="button" class="row" data-id="identities" aria-controls="viewer"><span class="n">09</span><span class="t">Marks</span><span class="s">Logos</span></button></li><li data-cat="merch"><button type="button" class="row" data-id="kit" aria-controls="viewer"><span class="n">10</span><span class="t">Club kit</span><span class="s">Roll-up, banner, vest, hoodie</span></button></li><li data-cat="campaign"><button type="button" class="row" data-id="earlier" aria-controls="viewer"><span class="n">11</span><span class="t">Earlier club work</span><span class="s">Social posts</span></button></li><li data-cat="deck"><button type="button" class="row" data-id="decks" aria-controls="viewer"><span class="n">12</span><span class="t">Decks &amp; certificates</span><span class="s">Presentations &amp; print</span></button></li></ol>
+      <article class="viewer" id="viewer" aria-live="polite">
+        <div class="v-top"><h3 id="vT"></h3><span class="v-meta" id="vC"></span></div>
+        <p class="v-desc" id="vD"></p>
+        <p class="v-links" id="vL"></p>
+        <div class="strip" id="strip"></div>
+        <div class="v-foot"><span id="vCount"></span><div class="arrows"><button type="button" id="prev" aria-label="Previous project">←</button><button type="button" id="next" aria-label="Next project">→</button></div></div>
+      </article>
+    </div>
+  </section>
+
+</div>
+<section class="social" id="social">
+  <div class="wrap">
+    <div class="so-head">
+      <div>
+        <p class="kicker">Social media management</p>
+        <h2>I run the Phoenix accounts</h2>
+        <p class="so-lede">Instagram and TikTok for Lions Club Phoenix Sud. I plan, film, edit and design the content myself, and lead the team behind it: content calendar, captions, stories and one consistent look.</p>
+      </div>
+      <dl class="stats">
+        <div><dt>170K</dt><dd>views on the top TikTok</dd></div>
+        <div><dt>640K+</dt><dd>views on the 17 videos shown here</dd></div>
+        <div><dt>3,724</dt><dd>Instagram followers · 357 posts</dd></div>
+      </dl>
+    </div>
+    <div class="reels" aria-label="Video covers with view counts"><button type="button" class="reel" data-full="img/tt-meet.jpg" aria-label="Open TikTok video cover"><img src="img/tt-meet.jpg" width="422" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/tt-cards.jpg" aria-label="Open TikTok video cover"><img src="img/tt-cards.jpg" width="414" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/tt-baskets.jpg" aria-label="Open TikTok video cover"><img src="img/tt-baskets.jpg" width="388" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/ig-tradi.jpg" aria-label="Open Instagram video cover"><img src="img/ig-tradi.jpg" width="360" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/ig-2025.jpg" aria-label="Open Instagram video cover"><img src="img/ig-2025.jpg" width="360" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/ig-1000.jpg" aria-label="Open Instagram video cover"><img src="img/ig-1000.jpg" width="360" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/tt-house.jpg" aria-label="Open TikTok video cover"><img src="img/tt-house.jpg" width="417" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/tt-door.jpg" aria-label="Open TikTok video cover"><img src="img/tt-door.jpg" width="418" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/tt-heart.jpg" aria-label="Open TikTok video cover"><img src="img/tt-heart.jpg" width="385" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/ig-wall.jpg" aria-label="Open Instagram video cover"><img src="img/ig-wall.jpg" width="360" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/ig-joinus.jpg" aria-label="Open Instagram video cover"><img src="img/ig-joinus.jpg" width="358" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/ig-octobre.jpg" aria-label="Open Instagram video cover"><img src="img/ig-octobre.jpg" width="357" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/ig-sahbek.jpg" aria-label="Open Instagram video cover"><img src="img/ig-sahbek.jpg" width="358" height="560" loading="lazy" alt=""><span>Instagram</span></button></div>
+    <div class="feeds">
+      <button type="button" class="feed" data-full="img/ig-grid-1.jpg" aria-label="Open Instagram feed"><img src="img/ig-grid-1.jpg" width="1400" height="743" loading="lazy" alt=""></button>
+      <button type="button" class="feed" data-full="img/ig-grid-2.jpg" aria-label="Open Instagram feed"><img src="img/ig-grid-2.jpg" width="1400" height="745" loading="lazy" alt=""></button>
+    </div>
+    <p class="so-note">@lionsphoenixsud on Instagram and TikTok. View counts as shown on each platform.</p>
+  </div>
+</section>
+<div class="wrap">
+  <section class="end">
+    <div id="about">
+      <img class="sig" src="img/logo-ar.png" alt="" width="513" height="434">
+      <h2>About</h2>
+      <p>Based in Tunis. Final-year Finance &amp; Business Analytics student at Tunis Business School, so sponsor decks and reports are as much my thing as posters.</p>
+      <p>Most of this work was made for Lions Club Phoenix Sud, a Lions campus club, where I design its events, campaigns and kit, and run its Instagram and TikTok, leading the media team.</p>
+      <ul class="svc" aria-label="Services">
+        <li>Logo &amp; brand identity</li><li>Apparel &amp; merch</li><li>Posters &amp; event print</li><li>Social media management</li><li>Packaging &amp; labels</li><li>Decks &amp; infographics</li>
+      </ul>
+    </div>
+    <div class="contact" id="contact">
+      <h2>Let's <span>work</span></h2>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/louayzaidi">LinkedIn · louayzaidi</a>
+        <a href="https://wa.me/21690146660">WhatsApp · +216 90 146 660</a>
+        <a href="mailto:louayzaidi11@gmail.com">louayzaidi11@gmail.com</a>
+        <a href="https://www.fiverr.com/louayzaidi">Fiverr · @louayzaidi</a>
+      </div>
+    </div>
+  </section>
+  <footer>© 2026 Louay Zaidi. Club, partner and film logos and artwork belong to their owners.</footer>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button type="button" id="lbClose" aria-label="Close preview">×</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script>
+(function(){
+  var D=[{"id": "mago", "t": "MAGO", "s": "Brand identity, packaging & brand book", "c": "Personal project · 2026", "cat": "brand packaging", "d": "A premium Tunisian olive oil named after Mago of Carthage. The O of the wordmark doubles as an olive. One bottle and label system runs across three regional editions (Sfax, Sahel and Sicca from El Kef), each with its own colour and Qallaline-tile band, plus 1 L tins and a full brand book.", "ln": [], "cr": "", "im": [["mago-range", 1600, 1000], ["mago-cover", 1600, 1066], ["mago-tins", 1600, 1333], ["mago-logos", 1600, 1066], ["mago-colour", 1600, 1066], ["mago-patterns", 1600, 1066]]}, {"id": "updown", "t": "Up&Down Tunis", "s": "Streetwear brand", "c": "Own brand · 2023", "cat": "brand merch", "d": "My own label: a boxed up/dn monogram and tees built on Tunisian places and attitude, like Lost in Sidi Bou with its khamsa, evil eye and barcode label.", "ln": [], "cr": "", "im": [["sidibou-back", 1080, 1080], ["updn-logo", 500, 500], ["sidibou-front", 1080, 1080], ["richman", 772, 493]]}, {"id": "ramadan", "t": "Ramadan 2026", "s": "Campaign identity & sponsor deck", "c": "Lions Club Phoenix Sud · 2026", "cat": "campaign deck", "d": "A brush-lettered mark for a 500-basket drive in Béja and Nadhour, and an 11-page sponsor deck for the Resto du Cœur, which served 120 hot meals a day at Bhar Lazreg.", "ln": [], "cr": "", "im": [["ramadan-logo", 1078, 727], ["resto-1", 910, 1287], ["resto-4", 910, 1287], ["resto-5", 910, 1287], ["resto-9", 910, 1287], ["rollup-bhar", 942, 1405]]}, {"id": "caravane", "t": "Caravane de santé", "s": "Event poster", "c": "Lions Club Phoenix Sud · 2026", "cat": "poster", "d": "A free health day at a primary school in Jaafar, Ariana. The final keeps the street in black and white, so only the volunteers, the flag and the title carry colour.", "ln": [], "cr": "", "im": [["caravane-3", 1200, 1600], ["caravane-1", 1200, 1600], ["caravane-2", 1200, 1600]]}, {"id": "blu", "t": "Blu Phoenix", "s": "Night market identity", "c": "with BluBlu Sidi Bou · 2024, 2025", "cat": "campaign poster", "d": "Two editions of a Ramadan night market at BluBlu, Sidi Bou Said, with a glowing wordmark where the crescent becomes the U. The 2025 edition, Le Grand Marché, sold out.", "ln": [], "cr": "Original post design by Skander Gammar.", "im": [["blu-fb", 1020, 510], ["blu-30", 828, 828]]}, {"id": "padel", "t": "Phoenix Padel", "s": "Tournament campaign", "c": "Lions Club Phoenix Sud · 2024–2026", "cat": "campaign poster", "d": "Full coverage of a charity padel tournament with Padel House Tunisia, from the 2024 launch post to the 2026 Padel Cup poster: rules, match schedules, a live bracket updated round by round, and the winners' voucher.", "ln": [], "cr": "", "im": [["padel-cup", 1200, 1499], ["padel-2024", 798, 798], ["padel-2", 1200, 1200], ["padel-reg", 1080, 1080], ["padel-tableau", 1074, 604], ["padel-huitiemes", 1074, 604], ["padel-quarts", 1074, 604], ["padel-voucher", 1058, 532]]}, {"id": "recruitment", "t": "Join the Fam'", "s": "Recruitment campaign", "c": "Lions Club Phoenix Sud · 2024–2025", "cat": "campaign", "d": "Recruitment for the 2024–25 mandate: a photo-strip post, a collage, and a lock-screen reminder that the form closes in a few hours.", "ln": [], "cr": "", "im": [["join-us", 1200, 1200], ["lockscreen", 1200, 2133], ["join-fam", 1200, 675], ["rollup-day", 942, 1545]]}, {"id": "posters", "t": "One-off posters", "s": "Event posters", "c": "Lions Club Phoenix Sud", "cat": "poster", "d": "A charity cinema screening, told through a fan asleep in his seat, and a coffee-and-games night drawn as a board game, with partner cafés as the squares.", "ln": [], "cr": "", "im": [["sahbek-story", 1200, 2133], ["games", 1077, 1071], ["sahbek-poster", 1200, 1500]]}, {"id": "identities", "t": "Marks", "s": "Logos", "c": "Campaigns, a radio, a club", "cat": "brand", "d": "أولادنا مستقبل بلادنا 2.0, where the calligraphy flows into the map of Tunisia. Libertad, the Tunis Business School radio. The Lions Club Phoenix Sud emblem.", "ln": [], "cr": "", "im": [["id-20-red", 1080, 1080], ["id-20-black", 801, 777], ["libertad-round", 1200, 1200], ["libertad-square", 1200, 1200], ["lions-emblem", 500, 500]]}, {"id": "kit", "t": "Club kit", "s": "Roll-up, banner, vest, hoodie", "c": "Lions Club Phoenix Sud · 2024–2026", "cat": "merch", "d": "The physical side of the club: a roll-up and a bilingual banner used at every action, volunteer vests and a member hoodie.", "ln": [], "cr": "", "im": [["rollup-store", 942, 1670], ["vest", 1200, 1200], ["hoodie", 1200, 1200], ["banner-team", 665, 845]]}, {"id": "earlier", "t": "Earlier club work", "s": "Social posts", "c": "Lions Club Phoenix Sud · 2024", "cat": "campaign", "d": "Posts from 2024: a recruitment carousel recapping the club's past actions, and a four-slide communiqué announcing the club's new identity as Lions Club Phoenix Sud.", "ln": [["See post on Facebook", "https://www.facebook.com/share/p/1K6vqUDqMh/"], ["See post on Facebook", "https://www.facebook.com/share/p/1E9k1KuQLL/"]], "cr": "", "im": [["early-recruit", 716, 593], ["early-communique", 716, 708]]}, {"id": "decks", "t": "Decks & certificates", "s": "Presentations & print", "c": "TBS · Lions Club Phoenix Sud · 2025–2026", "cat": "deck", "d": "A trading-mandate deck for FIN 350 at Tunis Business School, with Markowitz portfolio construction and a monitoring dashboard, plus two certificate systems (names blurred).", "ln": [], "cr": "", "im": [["fin-1", 1100, 619], ["fin-9", 1100, 619], ["fin-12", 1100, 619], ["cert-laurel", 1400, 989], ["cert-script", 1400, 989]]}];
+  var byId={};D.forEach(function(p){byId[p.id]=p;});
+  var rows=[].slice.call(document.querySelectorAll('.row'));
+  var cur=D[0].id;
+  var vT=document.getElementById('vT'),vC=document.getElementById('vC'),vD=document.getElementById('vD'),strip=document.getElementById('strip'),vCount=document.getElementById('vCount');
+  function show(id,fromHash){
+    var p=byId[id];if(!p)return;cur=id;
+    vT.textContent=p.t;vC.textContent=p.c;vD.textContent=p.d;if(p.cr){var b=document.createElement('strong');b.textContent=' '+p.cr;vD.appendChild(b);}
+    var vL=document.getElementById('vL');vL.innerHTML='';(p.ln||[]).forEach(function(l){var a=document.createElement('a');a.href=l[1];a.textContent=l[0]+' ↗';vL.appendChild(a);});
+    strip.innerHTML='';
+    p.im.forEach(function(m){
+      var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Open image full size');
+      b.style.aspectRatio=m[1]+'/'+m[2];
+      var i=document.createElement('img');i.src='img/'+m[0]+'.jpg';i.alt='';i.width=m[1];i.height=m[2];
+      b.appendChild(i);b.addEventListener('click',function(){openLb('img/'+m[0]+'.jpg',b);});strip.appendChild(b);
+    });
+    strip.scrollLeft=0;
+    vCount.textContent=p.s+' · '+p.im.length+' images';
+    rows.forEach(function(r){r.setAttribute('aria-current',r.dataset.id===id?'true':'false');});
+    if(!fromHash){try{history.replaceState(null,'','#'+id);}catch(e){}}
+  }
+  rows.forEach(function(r){r.addEventListener('click',function(){show(r.dataset.id);if(window.innerWidth<860)document.getElementById('viewer').scrollIntoView({block:'start'});});});
+  function visible(){return rows.filter(function(r){return !r.parentNode.hidden;}).map(function(r){return r.dataset.id;});}
+  function step(d){var v=visible();var k=v.indexOf(cur);show(v[(k+d+v.length)%v.length]);}
+  document.getElementById('prev').addEventListener('click',function(){step(-1);});
+  document.getElementById('next').addEventListener('click',function(){step(1);});
+  document.querySelectorAll('.chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      var f=c.dataset.f;
+      document.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});
+      rows.forEach(function(r){var li=r.parentNode;li.hidden=!(f==='all'||li.dataset.cat.split(' ').indexOf(f)>-1);});
+      var v=visible();if(v.indexOf(cur)<0&&v.length)show(v[0]);
+    });
+  });
+  var h=location.hash.replace('#','');show(byId[h]?h:D[0].id,true);
+
+  // lightbox
+  var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbClose=document.getElementById('lbClose'),last=null;
+  function openLb(src,from){last=from;lbImg.src=src;lb.classList.add('open');lbClose.focus();}
+  function closeLb(){lb.classList.remove('open');lbImg.removeAttribute('src');if(last)last.focus();}
+  document.querySelectorAll('.reel,.feed').forEach(function(b){b.addEventListener('click',function(){openLb(b.dataset.full,b);});});
+  lbClose.addEventListener('click',closeLb);
+  lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))closeLb();});
+
+})();
+</script>
+</body>
+</html>

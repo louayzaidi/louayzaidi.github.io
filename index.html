@@ -19,7 +19,7 @@
 <meta name="theme-color" content="#1747B8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Manrope:wght@400;500;700&amp;family=Reem+Kufi:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Manrope:wght@400;500;700&amp;family=Reem+Kufi:wght@500;700&amp;family=IBM+Plex+Sans+Arabic:wght@400;500;700&amp;display=swap" rel="stylesheet">
 <style>
 :root{
   /* Layout idea: a Sidi Bou wall. Whitewash ground, ink type, one blue door (the arch window), chéchia red for small marks. One screen of work: a project list beside a viewer. */
@@ -173,6 +173,27 @@ button{font:inherit;color:inherit}
 .lb.open ~ .wa-float{display:none}
 @media (max-width:860px){.how-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.wa-float span{display:none}.wa-float{padding:12px}}
 
+
+/* language switch */
+.top{gap:12px 20px}
+.langs{display:flex;gap:4px}
+.langs button{min-width:36px;min-height:32px;padding:4px 8px;border:1.5px solid var(--line);background:none;border-radius:999px;font-size:13px;font-weight:700;cursor:pointer}
+.langs button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--chalk)}
+.langs button[lang="ar"]{font-family:var(--ar);font-size:15px;line-height:1}
+/* arabic / rtl */
+html[lang="ar"]{--display:"Reem Kufi","Anton",sans-serif;--body:"IBM Plex Sans Arabic","Manrope",sans-serif}
+html[dir="rtl"] *{letter-spacing:0 !important}
+html[dir="rtl"] .hero h1,html[dir="rtl"] h2,html[dir="rtl"] .row .t,html[dir="rtl"] .v-top h3{line-height:1.2;font-weight:700}
+html[dir="rtl"] .hero h1{font-size:clamp(52px,8.5vw,120px)}
+html[dir="rtl"] .row{text-align:right}
+html[dir="rtl"] .row[aria-current="true"] .t{transform:translateX(-6px)}
+html[dir="rtl"] .wa-float{right:auto;left:18px}
+html[dir="rtl"] .lb button{right:auto;left:16px}
+html[dir="rtl"] .arrows{flex-direction:row-reverse}
+.ticker,.mark,.links,.stats dt{direction:ltr}
+.row .t,.row .s,.v-top h3,.v-meta,.worked li{unicode-bidi:plaintext}
+html[dir="rtl"] .links{text-align:right;align-items:flex-end}
+
 /* about + contact */
 .end{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);padding:clamp(40px,6vw,80px) 0}
 .end h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(36px,4.5vw,56px);line-height:1;margin:0 0 16px}
@@ -206,15 +227,16 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
 <div class="wrap">
   <div class="top">
     <a class="mark" href="#work"><img src="img/logo-ar.png" alt="لؤي الزايدي" width="513" height="434"><span>LOUAY ZAIDI<i>.</i></span></a>
-    <nav aria-label="Sections"><a href="#work">Work</a><a href="#social">Social</a><a href="#soon">2027</a><a href="#about">About</a><a href="Louay_Zaidi_CV.pdf">CV</a><a href="#contact">Contact</a></nav>
+    <nav aria-label="Sections"><a href="#work" data-i18n="nav.work">Work</a><a href="#social" data-i18n="nav.social">Social</a><a href="#soon">2027</a><a href="#about" data-i18n="nav.about">About</a><a href="Louay_Zaidi_CV.pdf" data-i18n="nav.cv">CV</a><a href="#contact" data-i18n="nav.contact">Contact</a></nav>
+    <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="en" lang="en">EN</button><button type="button" data-lang="fr" lang="fr">FR</button><button type="button" data-lang="ar" lang="ar">ع</button></div>
   </div>
 
   <section class="hero">
     <div>
-      <h1>Posters,<br>brands <span class="blue">&amp;</span> merch<br>from <span class="blue">Tunis</span><span class="ar" lang="ar">من تونس</span></h1>
-      <p class="lede">I'm <b>Louay Zaidi</b>, a graphic designer working in Arabic, French and English. Brand identities, event campaigns, apparel, social media, and decks that make numbers easy to read.</p>
-      <div class="ctas"><a class="btn primary" href="#work">See the work</a><a class="btn" href="#contact">Get in touch</a></div>
-      <a class="teaser" href="#soon"><span class="dot2"></span><span><b>Coming 2027:</b> finance, data &amp; partnerships portfolio</span><span aria-hidden="true">→</span></a>
+      <h1 data-i18n="hero.h1">Posters,<br>brands <span class="blue">&amp;</span> merch<br>from <span class="blue">Tunis</span><span class="ar" lang="ar">من تونس</span></h1>
+      <p class="lede" data-i18n="hero.lede">I'm <b>Louay Zaidi</b>, a graphic designer working in Arabic, French and English. Brand identities, event campaigns, apparel, social media, and decks that make numbers easy to read.</p>
+      <div class="ctas"><a class="btn primary" href="#work" data-i18n="hero.see">See the work</a><a class="btn" href="#contact" data-i18n="hero.touch">Get in touch</a></div>
+      <a class="teaser" href="#soon"><span class="dot2"></span><span data-i18n="hero.teaser"><b>Coming 2027:</b> finance, data &amp; partnerships portfolio</span><span aria-hidden="true">→</span></a>
     </div>
     <div class="fan" aria-hidden="true">
       <img src="img/padel-cup.jpg" alt="">
@@ -224,7 +246,7 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
   </section>
 </div>
 
-<div class="ticker" aria-hidden="true"><div>
+<div class="ticker" aria-hidden="true"><div id="tick">
   <span>Brand identity</span><span class="dot">●</span><span>Posters</span><span class="dot">●</span><span>Merch</span><span class="dot">●</span><span>Social media</span><span class="dot">●</span><span>Packaging</span><span class="dot">●</span><span>Decks</span><span class="dot">●</span><span class="ar">عربي</span><span class="dot">●</span><span>Français</span><span class="dot">●</span><span>English</span><span class="dot">●</span><span>Finance &amp; data · 2027</span><span class="dot">●</span>
   <span>Brand identity</span><span class="dot">●</span><span>Posters</span><span class="dot">●</span><span>Merch</span><span class="dot">●</span><span>Social media</span><span class="dot">●</span><span>Packaging</span><span class="dot">●</span><span>Decks</span><span class="dot">●</span><span class="ar">عربي</span><span class="dot">●</span><span>Français</span><span class="dot">●</span><span>English</span><span class="dot">●</span><span>Finance &amp; data · 2027</span><span class="dot">●</span>
 </div></div>
@@ -232,15 +254,15 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
 <div class="wrap">
   <section class="work" id="work">
     <div class="work-head">
-      <h2>Work · 12</h2>
+      <h2 data-i18n="work.h2">Work · 12</h2>
       <div class="chips" role="group" aria-label="Filter projects">
-        <button type="button" class="chip" data-f="all" aria-pressed="true">All</button>
-        <button type="button" class="chip" data-f="brand" aria-pressed="false">Brands</button>
-        <button type="button" class="chip" data-f="campaign" aria-pressed="false">Campaigns</button>
-        <button type="button" class="chip" data-f="poster" aria-pressed="false">Posters</button>
-        <button type="button" class="chip" data-f="packaging" aria-pressed="false">Packaging</button>
-        <button type="button" class="chip" data-f="merch" aria-pressed="false">Merch</button>
-        <button type="button" class="chip" data-f="deck" aria-pressed="false">Decks</button>
+        <button type="button" class="chip" data-f="all" data-i18n="chip.all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-f="brand" data-i18n="chip.brand" aria-pressed="false">Brands</button>
+        <button type="button" class="chip" data-f="campaign" data-i18n="chip.campaign" aria-pressed="false">Campaigns</button>
+        <button type="button" class="chip" data-f="poster" data-i18n="chip.poster" aria-pressed="false">Posters</button>
+        <button type="button" class="chip" data-f="packaging" data-i18n="chip.packaging" aria-pressed="false">Packaging</button>
+        <button type="button" class="chip" data-f="merch" data-i18n="chip.merch" aria-pressed="false">Merch</button>
+        <button type="button" class="chip" data-f="deck" data-i18n="chip.deck" aria-pressed="false">Decks</button>
       </div>
     </div>
     <div class="explorer">
@@ -260,18 +282,18 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
   <div class="wrap">
     <div class="how-grid">
       <div>
-        <p class="label">How I work</p>
-        <h2>From brief to final files</h2>
+        <p class="label" data-i18n="how.label">How I work</p>
+        <h2 data-i18n="how.h2">From brief to final files</h2>
       </div>
       <ol class="steps">
-        <li><span class="sn">01</span><b>Brief</b><span>A short call or chat on WhatsApp: your goal, audience, deadline and any references.</span></li>
-        <li><span class="sn">02</span><b>Concept</b><span>Two or three directions to choose from, shown in real context, not just on a white page.</span></li>
-        <li><span class="sn">03</span><b>Revisions</b><span>We refine the chosen direction together. Rounds included depend on the package.</span></li>
-        <li><span class="sn">04</span><b>Final files</b><span>Print-ready and social-ready exports (PDF, PNG, SVG) plus the source files.</span></li>
+        <li><span class="sn">01</span><b data-i18n="s1t">Brief</b><span data-i18n="s1d">A short call or chat on WhatsApp: your goal, audience, deadline and any references.</span></li>
+        <li><span class="sn">02</span><b data-i18n="s2t">Concept</b><span data-i18n="s2d">Two or three directions to choose from, shown in real context, not just on a white page.</span></li>
+        <li><span class="sn">03</span><b data-i18n="s3t">Revisions</b><span data-i18n="s3d">We refine the chosen direction together. Rounds included depend on the package.</span></li>
+        <li><span class="sn">04</span><b data-i18n="s4t">Final files</b><span data-i18n="s4d">Print-ready and social-ready exports (PDF, PNG, SVG) plus the source files.</span></li>
       </ol>
     </div>
     <div class="worked">
-      <span class="label">Worked with</span>
+      <span class="label" data-i18n="worked">Worked with</span>
       <ul><li>Lions Club Phoenix Sud</li><li>Lions Club Reine Didon Carthage</li><li>BluBlu Sidi Bou</li><li>Padel House Tunisia</li><li>Libertad · TBS Radio</li></ul>
     </div>
   </div>
@@ -280,14 +302,14 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
   <div class="wrap">
     <div class="so-head">
       <div>
-        <p class="kicker">Social media management</p>
-        <h2>I run the Phoenix accounts</h2>
-        <p class="so-lede">Instagram and TikTok for Lions Club Phoenix Sud. I plan, film, edit and design the content myself, and lead the team behind it: content calendar, captions, stories and one consistent look.</p>
+        <p class="kicker" data-i18n="so.kicker">Social media management</p>
+        <h2 data-i18n="so.h2">I run the Phoenix accounts</h2>
+        <p class="so-lede" data-i18n="so.lede">Instagram and TikTok for Lions Club Phoenix Sud. I plan, film, edit and design the content myself, and lead the team behind it: content calendar, captions, stories and one consistent look.</p>
       </div>
       <dl class="stats">
-        <div><dt>170K</dt><dd>views on the top TikTok</dd></div>
-        <div><dt>640K+</dt><dd>views on the 17 videos shown here</dd></div>
-        <div><dt>3,724</dt><dd>Instagram followers · 357 posts</dd></div>
+        <div><dt>170K</dt><dd data-i18n="so.st1">views on the top TikTok</dd></div>
+        <div><dt>640K+</dt><dd data-i18n="so.st2">views on the 17 videos shown here</dd></div>
+        <div><dt>3,724</dt><dd data-i18n="so.st3">Instagram followers · 357 posts</dd></div>
       </dl>
     </div>
     <div class="reels" aria-label="Video covers with view counts"><button type="button" class="reel" data-full="img/tt-meet.jpg" aria-label="Open TikTok video cover"><img src="img/tt-meet.jpg" width="422" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/tt-cards.jpg" aria-label="Open TikTok video cover"><img src="img/tt-cards.jpg" width="414" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/tt-baskets.jpg" aria-label="Open TikTok video cover"><img src="img/tt-baskets.jpg" width="388" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/ig-tradi.jpg" aria-label="Open Instagram video cover"><img src="img/ig-tradi.jpg" width="360" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/ig-2025.jpg" aria-label="Open Instagram video cover"><img src="img/ig-2025.jpg" width="360" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/ig-1000.jpg" aria-label="Open Instagram video cover"><img src="img/ig-1000.jpg" width="360" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/tt-house.jpg" aria-label="Open TikTok video cover"><img src="img/tt-house.jpg" width="417" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/tt-door.jpg" aria-label="Open TikTok video cover"><img src="img/tt-door.jpg" width="418" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/tt-heart.jpg" aria-label="Open TikTok video cover"><img src="img/tt-heart.jpg" width="385" height="560" loading="lazy" alt=""><span>TikTok</span></button><button type="button" class="reel" data-full="img/ig-wall.jpg" aria-label="Open Instagram video cover"><img src="img/ig-wall.jpg" width="360" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/ig-joinus.jpg" aria-label="Open Instagram video cover"><img src="img/ig-joinus.jpg" width="358" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/ig-octobre.jpg" aria-label="Open Instagram video cover"><img src="img/ig-octobre.jpg" width="357" height="560" loading="lazy" alt=""><span>Instagram</span></button><button type="button" class="reel" data-full="img/ig-sahbek.jpg" aria-label="Open Instagram video cover"><img src="img/ig-sahbek.jpg" width="358" height="560" loading="lazy" alt=""><span>Instagram</span></button></div>
@@ -295,21 +317,21 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
       <button type="button" class="feed" data-full="img/ig-grid-1.jpg" aria-label="Open Instagram feed"><img src="img/ig-grid-1.jpg" width="1400" height="743" loading="lazy" alt=""></button>
       <button type="button" class="feed" data-full="img/ig-grid-2.jpg" aria-label="Open Instagram feed"><img src="img/ig-grid-2.jpg" width="1400" height="745" loading="lazy" alt=""></button>
     </div>
-    <p class="so-note">@lionsphoenixsud on Instagram and TikTok. View counts as shown on each platform.</p>
+    <p class="so-note" data-i18n="so.note">@lionsphoenixsud on Instagram and TikTok. View counts as shown on each platform.</p>
   </div>
 </section>
 <section class="soon" id="soon">
   <div class="wrap">
     <div class="soon-head">
-      <p class="kicker">Coming 2027</p>
-      <h2>Finance, data <span>&amp;</span> partnerships</h2>
-      <p class="soon-lede">The other half of my work, still in progress. A second portfolio for financial modeling, data and sponsoring opens in 2027.</p>
+      <p class="kicker" data-i18n="soon.kicker">Coming 2027</p>
+      <h2 data-i18n="soon.h2">Finance, data <span>&amp;</span> partnerships</h2>
+      <p class="soon-lede" data-i18n="soon.lede">The other half of my work, still in progress. A second portfolio for financial modeling, data and sponsoring opens in 2027.</p>
     </div>
     <ul class="soon-grid">
-      <li><span class="tag">Soon</span><b>Financial modeling</b><span>DCF, 3-statement models and valuation, built on my FMVA training and Finance studies at TBS.</span></li>
-      <li><span class="tag">Soon</span><b>Data &amp; dashboards</b><span>Excel and BI dashboards, time-series forecasting and portfolio monitoring.</span></li>
-      <li><span class="tag">Soon</span><b>Automation</b><span>Workflow tools for small businesses, starting with a catalog generator for an eyewear shop.</span></li>
-      <li><span class="tag">Soon</span><b>Sponsoring &amp; partnerships</b><span>Sponsor decks, partner outreach and fundraising for charity events.</span></li>
+      <li><span class="tag" data-i18n="soon.tag">Soon</span><b data-i18n="c1t">Financial modeling</b><span data-i18n="c1d">DCF, 3-statement models and valuation, built on my FMVA training and Finance studies at TBS.</span></li>
+      <li><span class="tag" data-i18n="soon.tag">Soon</span><b data-i18n="c2t">Data &amp; dashboards</b><span data-i18n="c2d">Excel and BI dashboards, time-series forecasting and portfolio monitoring.</span></li>
+      <li><span class="tag" data-i18n="soon.tag">Soon</span><b data-i18n="c3t">Automation</b><span data-i18n="c3d">Workflow tools for small businesses, starting with a catalog generator for an eyewear shop.</span></li>
+      <li><span class="tag" data-i18n="soon.tag">Soon</span><b data-i18n="c4t">Sponsoring &amp; partnerships</b><span data-i18n="c4d">Sponsor decks, partner outreach and fundraising for charity events.</span></li>
     </ul>
   </div>
 </section>
@@ -317,16 +339,16 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
   <section class="end">
     <div id="about">
       <img class="sig" src="img/logo-ar.png" alt="" width="513" height="434">
-      <h2>About</h2>
-      <p>Based in Tunis. Final-year Finance &amp; Business Analytics student at Tunis Business School, so sponsor decks and reports are as much my thing as posters.</p>
-      <p>Most of this work was made for Lions Club Phoenix Sud, a Lions campus club, where I design its events, campaigns and kit, and run its Instagram and TikTok, leading the media team.</p>
-      <p><a class="btn primary" href="Louay_Zaidi_CV.pdf">Download CV (PDF)</a></p>
-      <ul class="svc" aria-label="Services">
+      <h2 data-i18n="about.h2">About</h2>
+      <p data-i18n="about.p1">Based in Tunis. Final-year Finance &amp; Business Analytics student at Tunis Business School, so sponsor decks and reports are as much my thing as posters.</p>
+      <p data-i18n="about.p2">Most of this work was made for Lions Club Phoenix Sud, a Lions campus club, where I design its events, campaigns and kit, and run its Instagram and TikTok, leading the media team.</p>
+      <p><a class="btn primary" href="Louay_Zaidi_CV.pdf" data-i18n="about.cv">Download CV (PDF)</a></p>
+      <ul class="svc" aria-label="Services" id="svc">
         <li>Logo &amp; brand identity</li><li>Apparel &amp; merch</li><li>Posters &amp; event print</li><li>Social media management</li><li>Packaging &amp; labels</li><li>Decks &amp; infographics</li>
       </ul>
     </div>
     <div class="contact" id="contact">
-      <h2>Let's <span>work</span></h2>
+      <h2 data-i18n="contact.h2">Let's <span>work</span></h2>
       <div class="links">
         <a href="https://www.linkedin.com/in/louayzaidi">LinkedIn · louayzaidi</a>
         <a href="https://wa.me/21690146660">WhatsApp · +216 90 146 660</a>
@@ -335,12 +357,12 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
       </div>
     </div>
   </section>
-  <footer>© 2026 Louay Zaidi. Club, partner and film logos and artwork belong to their owners.</footer>
+  <footer data-i18n="footer">© 2026 Louay Zaidi. Club, partner and film logos and artwork belong to their owners.</footer>
 </div>
 
 <a class="wa-float" href="https://wa.me/21690146660" aria-label="Message me on WhatsApp">
   <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg>
-  <span>WhatsApp</span>
+  <span data-i18n="wa">WhatsApp</span>
 </a>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image preview">
@@ -351,14 +373,17 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
 <script>
 (function(){
   var D=[{"id": "mago", "t": "MAGO", "s": "Brand identity, packaging & brand book", "c": "Personal project · 2026", "cat": "brand packaging", "d": "A premium Tunisian olive oil named after Mago of Carthage. The O of the wordmark doubles as an olive. One bottle and label system runs across three regional editions (Sfax, Sahel and Sicca from El Kef), each with its own colour and Qallaline-tile band, plus 1 L tins and a full brand book.", "ln": [], "cr": "", "im": [["mago-range", 1600, 1000], ["mago-cover", 1600, 1066], ["mago-tins", 1600, 1333], ["mago-logos", 1600, 1066], ["mago-colour", 1600, 1066], ["mago-patterns", 1600, 1066]]}, {"id": "updown", "t": "Up&Down Tunis", "s": "Streetwear brand", "c": "Own brand · 2023", "cat": "brand merch", "d": "My own label: a boxed up/dn monogram and tees built on Tunisian places and attitude, like Lost in Sidi Bou with its khamsa, evil eye and barcode label.", "ln": [], "cr": "", "im": [["sidibou-back", 1080, 1080], ["updn-logo", 500, 500], ["sidibou-front", 1080, 1080], ["richman", 772, 493]]}, {"id": "ramadan", "t": "Ramadan 2026", "s": "Campaign identity & sponsor deck", "c": "Lions Club Phoenix Sud · 2026", "cat": "campaign deck", "d": "A brush-lettered mark for a 500-basket drive in Béja and Nadhour, and an 11-page sponsor deck for the Resto du Cœur, which served 120 hot meals a day at Bhar Lazreg.", "ln": [], "cr": "", "im": [["ramadan-logo", 1078, 727], ["resto-1", 910, 1287], ["resto-4", 910, 1287], ["resto-5", 910, 1287], ["resto-9", 910, 1287], ["rollup-bhar", 942, 1405]]}, {"id": "caravane", "t": "Caravane de santé", "s": "Event poster", "c": "Lions Club Phoenix Sud · 2026", "cat": "poster", "d": "A free health day at a primary school in Jaafar, Ariana. The final keeps the street in black and white, so only the volunteers, the flag and the title carry colour.", "ln": [], "cr": "", "im": [["caravane-3", 1200, 1600], ["caravane-1", 1200, 1600], ["caravane-2", 1200, 1600]]}, {"id": "blu", "t": "Blu Phoenix", "s": "Night market identity", "c": "with BluBlu Sidi Bou · 2024, 2025", "cat": "campaign poster", "d": "Two editions of a Ramadan night market at BluBlu, Sidi Bou Said, with a glowing wordmark where the crescent becomes the U. The 2025 edition, Le Grand Marché, sold out.", "ln": [], "cr": "Original post design by Skander Gammar.", "im": [["blu-fb", 1020, 510], ["blu-30", 828, 828]]}, {"id": "padel", "t": "Phoenix Padel", "s": "Tournament campaign", "c": "Lions Club Phoenix Sud · 2024–2026", "cat": "campaign poster", "d": "Full coverage of a charity padel tournament with Padel House Tunisia, from the 2024 launch post to the 2026 Padel Cup poster: rules, match schedules, a live bracket updated round by round, and the winners' voucher.", "ln": [], "cr": "2026 Padel Cup poster made in collaboration with Baya Sellami.", "im": [["padel-cup", 1200, 1499], ["padel-2024", 798, 798], ["padel-2", 1200, 1200], ["padel-reg", 1080, 1080], ["padel-tableau", 1074, 604], ["padel-huitiemes", 1074, 604], ["padel-quarts", 1074, 604], ["padel-voucher", 1058, 532]]}, {"id": "recruitment", "t": "Join the Fam'", "s": "Recruitment campaign", "c": "Lions Club Phoenix Sud · 2024–2025", "cat": "campaign", "d": "Recruitment for the 2024–25 mandate: a photo-strip post, a collage, and a lock-screen reminder that the form closes in a few hours.", "ln": [], "cr": "", "im": [["join-us", 1200, 1200], ["lockscreen", 1200, 2133], ["join-fam", 1200, 675], ["rollup-day", 942, 1545]]}, {"id": "posters", "t": "One-off posters", "s": "Event posters", "c": "Lions Club Phoenix Sud", "cat": "poster", "d": "A charity cinema screening, told through a fan asleep in his seat, and a coffee-and-games night drawn as a board game, with partner cafés as the squares.", "ln": [], "cr": "", "im": [["sahbek-story", 1200, 2133], ["games", 1077, 1071], ["sahbek-poster", 1200, 1500]]}, {"id": "identities", "t": "Marks", "s": "Logos", "c": "Campaigns, a radio, a club", "cat": "brand", "d": "أولادنا مستقبل بلادنا 2.0, where the calligraphy flows into the map of Tunisia. Libertad, the Tunis Business School radio. The Lions Club Phoenix Sud emblem.", "ln": [], "cr": "", "im": [["id-20-red", 1080, 1080], ["id-20-black", 801, 777], ["libertad-round", 1200, 1200], ["libertad-square", 1200, 1200], ["lions-emblem", 500, 500]]}, {"id": "kit", "t": "Club kit", "s": "Roll-up, banner, vest, hoodie", "c": "Lions Club Phoenix Sud · 2024–2026", "cat": "merch", "d": "The physical side of the club: a roll-up and a bilingual banner used at every action, volunteer vests and a member hoodie.", "ln": [], "cr": "", "im": [["rollup-store", 942, 1670], ["vest", 1200, 1200], ["hoodie", 1200, 1200], ["banner-team", 665, 845]]}, {"id": "earlier", "t": "Earlier club work", "s": "Social posts", "c": "Lions Club Phoenix Sud · 2024", "cat": "campaign", "d": "Posts from 2024: a recruitment carousel recapping the club's past actions, and a four-slide communiqué announcing the club's new identity as Lions Club Phoenix Sud.", "ln": [["See post on Facebook", "https://www.facebook.com/share/p/1K6vqUDqMh/"], ["See post on Facebook", "https://www.facebook.com/share/p/1E9k1KuQLL/"]], "cr": "", "im": [["early-recruit", 716, 593], ["early-communique", 716, 708]]}, {"id": "decks", "t": "Decks & certificates", "s": "Presentations & print", "c": "TBS · Lions Club Phoenix Sud · 2025–2026", "cat": "deck", "d": "A trading-mandate deck for FIN 350 at Tunis Business School, with Markowitz portfolio construction and a monitoring dashboard, plus two certificate systems (names blurred).", "ln": [], "cr": "", "im": [["fin-1", 1100, 619], ["fin-9", 1100, 619], ["fin-12", 1100, 619], ["cert-laurel", 1400, 989], ["cert-script", 1400, 989]]}];
+  var STR={"en": {"nav.work": "Work", "nav.social": "Social", "nav.about": "About", "nav.cv": "CV", "nav.contact": "Contact", "hero.h1": "Posters,<br>brands <span class=\"blue\">&amp;</span> merch<br>from <span class=\"blue\">Tunis</span><span class=\"ar\" lang=\"ar\">من تونس</span>", "hero.lede": "I'm <b>Louay Zaidi</b>, a graphic designer working in Arabic, French and English. Brand identities, event campaigns, apparel, social media, and decks that make numbers easy to read.", "hero.see": "See the work", "hero.touch": "Get in touch", "hero.teaser": "<b>Coming 2027:</b> finance, data &amp; partnerships portfolio", "ticker": ["Brand identity", "Posters", "Merch", "Social media", "Packaging", "Decks", "عربي", "Français", "English", "Finance &amp; data · 2027"], "work.h2": "Work · {n}", "chip.all": "All", "chip.brand": "Brands", "chip.campaign": "Campaigns", "chip.poster": "Posters", "chip.packaging": "Packaging", "chip.merch": "Merch", "chip.deck": "Decks", "images": "images", "how.label": "How I work", "how.h2": "From brief to final files", "s1t": "Brief", "s1d": "A short call or chat on WhatsApp: your goal, audience, deadline and any references.", "s2t": "Concept", "s2d": "Two or three directions to choose from, shown in real context, not just on a white page.", "s3t": "Revisions", "s3d": "We refine the chosen direction together. Rounds included depend on the package.", "s4t": "Final files", "s4d": "Print-ready and social-ready exports (PDF, PNG, SVG) plus the source files.", "worked": "Worked with", "so.kicker": "Social media management", "so.h2": "I run the Phoenix accounts", "so.lede": "Instagram and TikTok for Lions Club Phoenix Sud. I plan, film, edit and design the content myself, and lead the team behind it: content calendar, captions, stories and one consistent look.", "so.st1": "views on the top TikTok", "so.st2": "views on the 17 videos shown here", "so.st3": "Instagram followers · 357 posts", "so.note": "@lionsphoenixsud on Instagram and TikTok. View counts as shown on each platform.", "soon.kicker": "Coming 2027", "soon.h2": "Finance, data <span>&amp;</span> partnerships", "soon.lede": "The other half of my work, still in progress. A second portfolio for financial modeling, data and sponsoring opens in 2027.", "soon.tag": "Soon", "c1t": "Financial modeling", "c1d": "DCF, 3-statement models and valuation, built on my FMVA training and Finance studies at TBS.", "c2t": "Data &amp; dashboards", "c2d": "Excel and BI dashboards, time-series forecasting and portfolio monitoring.", "c3t": "Automation", "c3d": "Workflow tools for small businesses, starting with a catalog generator for an eyewear shop.", "c4t": "Sponsoring &amp; partnerships", "c4d": "Sponsor decks, partner outreach and fundraising for charity events.", "about.h2": "About", "about.p1": "Based in Tunis. Final-year Finance &amp; Business Analytics student at Tunis Business School, so sponsor decks and reports are as much my thing as posters.", "about.p2": "Most of this work was made for Lions Club Phoenix Sud, a Lions campus club, where I design its events, campaigns and kit, and run its Instagram and TikTok, leading the media team.", "about.cv": "Download CV (PDF)", "svc": ["Logo &amp; brand identity", "Apparel &amp; merch", "Posters &amp; event print", "Social media management", "Packaging &amp; labels", "Decks &amp; infographics"], "contact.h2": "Let's <span>work</span>", "footer": "© 2026 Louay Zaidi. Club, partner and film logos and artwork belong to their owners.", "wa": "WhatsApp"}, "fr": {"nav.work": "Projets", "nav.social": "Réseaux", "nav.about": "À propos", "nav.cv": "CV", "nav.contact": "Contact", "hero.h1": "Affiches,<br>marques <span class=\"blue\">&amp;</span> merch<br>depuis <span class=\"blue\">Tunis</span><span class=\"ar\" lang=\"ar\">من تونس</span>", "hero.lede": "Je suis <b>Louay Zaidi</b>, graphiste, et je travaille en arabe, en français et en anglais. Identités de marque, campagnes événementielles, textile, réseaux sociaux, et présentations qui rendent les chiffres faciles à lire.", "hero.see": "Voir les projets", "hero.touch": "Me contacter", "hero.teaser": "<b>En 2027 :</b> portfolio finance, data &amp; partenariats", "ticker": ["Identité de marque", "Affiches", "Merch", "Réseaux sociaux", "Packaging", "Présentations", "عربي", "Français", "English", "Finance &amp; data · 2027"], "work.h2": "Projets · {n}", "chip.all": "Tout", "chip.brand": "Marques", "chip.campaign": "Campagnes", "chip.poster": "Affiches", "chip.packaging": "Packaging", "chip.merch": "Merch", "chip.deck": "Présentations", "images": "images", "how.label": "Ma méthode", "how.h2": "Du brief aux fichiers finaux", "s1t": "Brief", "s1d": "Un court appel ou un échange sur WhatsApp : votre objectif, votre public, votre délai et vos références.", "s2t": "Concept", "s2d": "Deux ou trois pistes au choix, présentées en situation réelle, pas seulement sur une page blanche.", "s3t": "Retouches", "s3d": "On affine ensemble la piste retenue. Le nombre de retouches dépend de la formule.", "s4t": "Fichiers finaux", "s4d": "Exports prêts pour l'impression et les réseaux (PDF, PNG, SVG) et les fichiers sources.", "worked": "Ils m'ont fait confiance", "so.kicker": "Gestion des réseaux sociaux", "so.h2": "Je gère les comptes Phoenix", "so.lede": "Instagram et TikTok du Lions Club Phoenix Sud. Je planifie, filme, monte et conçois le contenu moi-même, et je dirige l'équipe : calendrier éditorial, légendes, stories et une identité visuelle cohérente.", "so.st1": "vues sur le meilleur TikTok", "so.st2": "vues sur les 17 vidéos présentées", "so.st3": "abonnés Instagram · 357 publications", "so.note": "@lionsphoenixsud sur Instagram et TikTok. Vues telles qu'affichées sur chaque plateforme.", "soon.kicker": "En 2027", "soon.h2": "Finance, data <span>&amp;</span> partenariats", "soon.lede": "L'autre moitié de mon travail, encore en construction. Un second portfolio dédié à la modélisation financière, à la data et au sponsoring ouvrira en 2027.", "soon.tag": "Bientôt", "c1t": "Modélisation financière", "c1d": "DCF, modèles à trois états financiers et valorisation, appuyés sur ma formation FMVA et mes études de finance à la TBS.", "c2t": "Data &amp; tableaux de bord", "c2d": "Tableaux de bord Excel et BI, prévisions de séries temporelles et suivi de portefeuille.", "c3t": "Automatisation", "c3d": "Outils pour les petites entreprises, à commencer par un générateur de catalogue pour un opticien.", "c4t": "Sponsoring &amp; partenariats", "c4d": "Dossiers de sponsoring, prospection de partenaires et collecte de fonds pour des événements caritatifs.", "about.h2": "À propos", "about.p1": "Basé à Tunis. Étudiant en dernière année de Finance &amp; Business Analytics à la Tunis Business School : les dossiers de sponsoring et les rapports me parlent autant que les affiches.", "about.p2": "La plupart de ces projets ont été réalisés pour le Lions Club Phoenix Sud, un club Lions étudiant, dont je conçois les événements, les campagnes et le matériel, et dont je gère l'Instagram et le TikTok à la tête de l'équipe média.", "about.cv": "Télécharger le CV (PDF)", "svc": ["Logo &amp; identité de marque", "Textile &amp; merch", "Affiches &amp; print événementiel", "Gestion des réseaux sociaux", "Packaging &amp; étiquettes", "Présentations &amp; infographies"], "contact.h2": "Travaillons <span>ensemble</span>", "footer": "© 2026 Louay Zaidi. Les logos et visuels des clubs, partenaires et films appartiennent à leurs propriétaires.", "wa": "WhatsApp"}, "ar": {"nav.work": "الأعمال", "nav.social": "التواصل الاجتماعي", "nav.about": "نبذة", "nav.cv": "السيرة الذاتية", "nav.contact": "تواصل", "hero.h1": "ملصقات،<br>علامات <span class=\"blue\">و</span>ملابس<br>من <span class=\"blue\">تونس</span>", "hero.lede": "أنا <b>لؤي الزايدي</b>، مصمم غرافيك أعمل بالعربية والفرنسية والإنجليزية. هويات بصرية، حملات للفعاليات، تصاميم ملابس، محتوى لمواقع التواصل، وعروض تقديمية تجعل الأرقام سهلة القراءة.", "hero.see": "شاهد الأعمال", "hero.touch": "تواصل معي", "hero.teaser": "<b>قريبًا في 2027:</b> ملف أعمال في المالية والبيانات والشراكات", "ticker": ["هوية بصرية", "ملصقات", "ملابس", "تواصل اجتماعي", "تغليف", "عروض تقديمية", "عربي", "Français", "English", "مالية وبيانات · 2027"], "work.h2": "الأعمال · {n}", "chip.all": "الكل", "chip.brand": "علامات", "chip.campaign": "حملات", "chip.poster": "ملصقات", "chip.packaging": "تغليف", "chip.merch": "ملابس", "chip.deck": "عروض", "images": "صور", "how.label": "طريقة عملي", "how.h2": "من الفكرة إلى الملفات النهائية", "s1t": "الفكرة", "s1d": "مكالمة قصيرة أو محادثة على واتساب: هدفك، جمهورك، الموعد النهائي وأي مراجع لديك.", "s2t": "المقترحات", "s2d": "اتجاهان أو ثلاثة للاختيار بينها، معروضة في سياقها الحقيقي لا على صفحة بيضاء فقط.", "s3t": "التعديلات", "s3d": "نطوّر الاتجاه المختار معًا. عدد جولات التعديل حسب الباقة.", "s4t": "الملفات النهائية", "s4d": "ملفات جاهزة للطباعة ولمواقع التواصل (PDF وPNG وSVG) مع الملفات المصدرية.", "worked": "عملت مع", "so.kicker": "إدارة مواقع التواصل", "so.h2": "أدير حسابات فينيكس", "so.lede": "إنستغرام وتيك توك لنادي ليونز فينيكس الجنوب. أخطط للمحتوى وأصوّره وأُمنتجه وأصمّمه بنفسي، وأقود الفريق المسؤول عنه: جدول النشر، النصوص، القصص، وهوية بصرية موحّدة.", "so.st1": "مشاهدة لأفضل فيديو على تيك توك", "so.st2": "مشاهدة لـ 17 فيديو معروضة هنا", "so.st3": "متابع على إنستغرام · 357 منشورًا", "so.note": "@lionsphoenixsud على إنستغرام وتيك توك. أرقام المشاهدات كما تظهر على كل منصة.", "soon.kicker": "قريبًا في 2027", "soon.h2": "المالية والبيانات <span>و</span>الشراكات", "soon.lede": "النصف الآخر من عملي، وما زال قيد التطوير. ملف أعمال ثانٍ للنمذجة المالية والبيانات والرعاية يُطلق سنة 2027.", "soon.tag": "قريبًا", "c1t": "النمذجة المالية", "c1d": "نماذج DCF والقوائم المالية الثلاث والتقييم، استنادًا إلى تكويني في FMVA ودراستي للمالية في TBS.", "c2t": "البيانات ولوحات المتابعة", "c2d": "لوحات متابعة على Excel وBI، توقّع السلاسل الزمنية ومتابعة المحافظ الاستثمارية.", "c3t": "الأتمتة", "c3d": "أدوات عمل للمؤسسات الصغيرة، بدءًا بمولّد كتالوجات لمحل نظارات.", "c4t": "الرعاية والشراكات", "c4d": "ملفات رعاية، التواصل مع الشركاء، وجمع التبرعات للفعاليات الخيرية.", "about.h2": "نبذة", "about.p1": "مقيم في تونس. طالب في السنة الأخيرة، اختصاص المالية وتحليل الأعمال في المدرسة العليا للأعمال بتونس (TBS)، لذلك تهمّني ملفات الرعاية والتقارير بقدر ما تهمّني الملصقات.", "about.p2": "أغلب هذه الأعمال أُنجزت لنادي ليونز فينيكس الجنوب، وهو نادٍ طلابي، حيث أصمّم فعالياته وحملاته ومستلزماته، وأدير حسابيه على إنستغرام وتيك توك على رأس فريق الإعلام.", "about.cv": "تحميل السيرة الذاتية (PDF)", "svc": ["الشعار والهوية البصرية", "الملابس والمنتجات", "الملصقات ومطبوعات الفعاليات", "إدارة مواقع التواصل", "التغليف والملصقات التجارية", "العروض التقديمية والإنفوغرافيك"], "contact.h2": "لنعمل <span>معًا</span>", "footer": "© 2026 لؤي الزايدي. شعارات ورسوم النوادي والشركاء والأفلام ملك لأصحابها.", "wa": "واتساب"}}, PT={"mago": {"fr": ["MAGO", "Identité, packaging & brand book", "Projet personnel · 2026", "Une huile d'olive tunisienne haut de gamme, baptisée d'après Magon de Carthage. Le O du logo est aussi une olive. Un même système de bouteille et d'étiquette décline trois éditions régionales (Sfax, Sahel et Sicca, du Kef), chacune avec sa couleur et sa frise de carreaux Qallaline, avec des bidons de 1 L et un brand book complet.", ""], "ar": ["ماغو", "هوية بصرية، تغليف ودليل علامة", "مشروع شخصي · 2026", "زيت زيتون تونسي فاخر يحمل اسم ماغون القرطاجي. حرف O في الشعار هو أيضًا حبة زيتون. نظام واحد للقارورة والملصق يتوزّع على ثلاث نسخ جهوية (صفاقس، الساحل وسيكا من الكاف)، لكل منها لونها وشريط من زليج القلالين، مع علب لتر واحد ودليل كامل للعلامة.", ""]}, "updown": {"fr": ["Up&Down Tunis", "Marque streetwear", "Ma propre marque · 2023", "Ma propre marque : un monogramme up/dn encadré et des t-shirts inspirés des lieux et de l'attitude tunisiens, comme Lost in Sidi Bou avec sa khamsa, son œil et son étiquette code-barres.", ""], "ar": ["Up&Down Tunis", "علامة ملابس", "علامتي الخاصة · 2023", "علامتي الخاصة: شعار up/dn داخل إطار، وقمصان مستوحاة من الأماكن والروح التونسية، مثل Lost in Sidi Bou بالخمسة والعين وملصق الباركود.", ""]}, "ramadan": {"fr": ["Ramadan 2026", "Identité de campagne & dossier sponsors", "Lions Club Phoenix Sud · 2026", "Un logo au pinceau pour une collecte de 500 couffins à Béja et Nadhour, et un dossier sponsors de 11 pages pour le Resto du Cœur, qui servait 120 repas chauds par jour à Bhar Lazreg.", ""], "ar": ["رمضان 2026", "هوية حملة وملف رعاية", "نادي ليونز فينيكس الجنوب · 2026", "شعار بخط الفرشاة لحملة 500 قفة في باجة والناظور، وملف رعاية من 11 صفحة لمطعم الرحمة الذي قدّم 120 وجبة ساخنة يوميًا في البحر الأزرق.", ""]}, "caravane": {"fr": ["Caravane de santé", "Affiche d'événement", "Lions Club Phoenix Sud · 2026", "Une journée de consultations gratuites dans une école primaire de Jaafar, à l'Ariana. La version finale garde la rue en noir et blanc : seuls les bénévoles, le drapeau et le titre sont en couleur.", ""], "ar": ["القافلة الصحية", "ملصق فعالية", "نادي ليونز فينيكس الجنوب · 2026", "يوم استشارات طبية مجانية في مدرسة ابتدائية بجعفر، أريانة. النسخة النهائية تُبقي الشارع بالأبيض والأسود، فلا يحمل اللون إلا المتطوعون والعلم والعنوان.", ""]}, "blu": {"fr": ["Blu Phoenix", "Identité de marché nocturne", "avec BluBlu Sidi Bou · 2024, 2025", "Deux éditions d'un marché nocturne du Ramadan au BluBlu, à Sidi Bou Saïd, avec un logo lumineux où le croissant devient le U. L'édition 2025, Le Grand Marché, a affiché complet.", "Design du post original par Skander Gammar."], "ar": ["Blu Phoenix", "هوية سوق ليلي", "مع BluBlu سيدي بوسعيد · 2024، 2025", "دورتان لسوق ليلي رمضاني في BluBlu بسيدي بوسعيد، بشعار مضيء يتحوّل فيه الهلال إلى حرف U. دورة 2025، السوق الكبير، نفدت تذاكرها.", "تصميم المنشور الأصلي: Skander Gammar."]}, "padel": {"fr": ["Phoenix Padel", "Campagne de tournoi", "Lions Club Phoenix Sud · 2024–2026", "La couverture complète d'un tournoi de padel caritatif avec Padel House Tunisia, du post de lancement 2024 à l'affiche de la Padel Cup 2026 : règlement, plannings des matchs, tableau mis à jour à chaque tour et bon des vainqueurs.", "Affiche de la Padel Cup 2026 réalisée en collaboration avec Baya Sellami."], "ar": ["Phoenix Padel", "حملة دورة", "نادي ليونز فينيكس الجنوب · 2024–2026", "تغطية كاملة لدورة بادل خيرية مع Padel House Tunisia، من منشور الإطلاق في 2024 إلى ملصق Padel Cup 2026: القوانين، جداول المباريات، جدول الأدوار المحدَّث في كل جولة، وقسيمة الفائزين.", "ملصق Padel Cup 2026 بالتعاون مع Baya Sellami."]}, "recruitment": {"fr": ["Join the Fam'", "Campagne de recrutement", "Lions Club Phoenix Sud · 2024–2025", "Le recrutement du mandat 2024–25 : un post en bande photo, un collage, et un rappel en fond d'écran verrouillé annonçant la fermeture du formulaire dans quelques heures.", ""], "ar": ["Join the Fam'", "حملة انتداب", "نادي ليونز فينيكس الجنوب · 2024–2025", "الانتداب لعهدة 2024–2025: منشور بشريط صور، كولاج، وتذكير على شكل شاشة قفل بأن الاستمارة تُغلق خلال ساعات.", ""]}, "posters": {"fr": ["Affiches uniques", "Affiches d'événements", "Lions Club Phoenix Sud", "Une projection caritative racontée par un spectateur endormi dans son fauteuil, et une soirée café-jeux dessinée comme un plateau de jeu, où les cafés partenaires deviennent les cases.", ""], "ar": ["ملصقات متفرقة", "ملصقات فعاليات", "نادي ليونز فينيكس الجنوب", "عرض سينمائي خيري يرويه متفرّج نائم في مقعده، وسهرة قهوة وألعاب مرسومة كلوحة لعبة، تتحوّل فيها المقاهي الشريكة إلى خانات.", ""]}, "identities": {"fr": ["Logos", "Logos", "Campagnes, radio, club", "أولادنا مستقبل بلادنا 2.0, où la calligraphie se fond dans la carte de la Tunisie. Libertad, la radio de la Tunis Business School. L'emblème du Lions Club Phoenix Sud.", ""], "ar": ["شعارات", "شعارات", "حملات، إذاعة، نادٍ", "أولادنا مستقبل بلادنا 2.0، حيث ينساب الخط في خريطة تونس. ليبرتاد، إذاعة المدرسة العليا للأعمال بتونس. شعار نادي ليونز فينيكس الجنوب.", ""]}, "kit": {"fr": ["Matériel du club", "Roll-up, banderole, gilet, sweat", "Lions Club Phoenix Sud · 2024–2026", "Le côté physique du club : un roll-up et une banderole bilingue utilisés à chaque action, des gilets de bénévoles et un sweat à capuche pour les membres.", ""], "ar": ["مستلزمات النادي", "رول أب، لافتة، صدرية، سويتشيرت", "نادي ليونز فينيكس الجنوب · 2024–2026", "الجانب المادي للنادي: رول أب ولافتة بلغتين تُستعمل في كل نشاط، صدريات للمتطوعين وسويتشيرت للأعضاء.", ""]}, "earlier": {"fr": ["Travaux plus anciens", "Posts réseaux sociaux", "Lions Club Phoenix Sud · 2024", "Des posts de 2024 : un carrousel de recrutement qui revient sur les actions passées du club, et un communiqué en quatre visuels annonçant sa nouvelle identité de Lions Club Phoenix Sud.", ""], "ar": ["أعمال سابقة", "منشورات تواصل اجتماعي", "نادي ليونز فينيكس الجنوب · 2024", "منشورات من 2024: كاروسيل انتداب يستعرض أنشطة النادي السابقة، وبلاغ من أربع صور يعلن هويته الجديدة: نادي ليونز فينيكس الجنوب.", ""]}, "decks": {"fr": ["Présentations & certificats", "Présentations & print", "TBS · Lions Club Phoenix Sud · 2025–2026", "Une présentation pour un mandat de trading simulé en FIN 350 à la Tunis Business School, avec une construction de portefeuille de Markowitz et un tableau de suivi, et deux systèmes de certificats (noms floutés).", ""], "ar": ["عروض وشهادات", "عروض تقديمية ومطبوعات", "TBS · نادي ليونز فينيكس الجنوب · 2025–2026", "عرض تقديمي لمحفظة تداول افتراضية في مادة FIN 350 بالمدرسة العليا للأعمال بتونس، يتضمّن بناء محفظة ماركويتز ولوحة متابعة، ونظامان للشهادات (الأسماء مموّهة).", ""]}}, LNL={"en": "See post on Facebook", "fr": "Voir le post sur Facebook", "ar": "شاهد المنشور على فيسبوك"};
+  var L='en';
+  function tp(p){var t=(PT[p.id]||{})[L];return t?{t:t[0],s:t[1],c:t[2],d:t[3],cr:t[4]}:{t:p.t,s:p.s,c:p.c,d:p.d,cr:p.cr};}
   var byId={};D.forEach(function(p){byId[p.id]=p;});
   var rows=[].slice.call(document.querySelectorAll('.row'));
   var cur=D[0].id;
   var vT=document.getElementById('vT'),vC=document.getElementById('vC'),vD=document.getElementById('vD'),strip=document.getElementById('strip'),vCount=document.getElementById('vCount');
   function show(id,fromHash){
     var p=byId[id];if(!p)return;cur=id;
-    vT.textContent=p.t;vC.textContent=p.c;vD.textContent=p.d;if(p.cr){var b=document.createElement('strong');b.textContent=' '+p.cr;vD.appendChild(b);}
-    var vL=document.getElementById('vL');vL.innerHTML='';(p.ln||[]).forEach(function(l){var a=document.createElement('a');a.href=l[1];a.textContent=l[0]+' ↗';vL.appendChild(a);});
+    var q=tp(p);vT.textContent=q.t;vC.textContent=q.c;vD.textContent=q.d;if(q.cr){var b=document.createElement('strong');b.textContent=' '+q.cr;vD.appendChild(b);}
+    var vL=document.getElementById('vL');vL.innerHTML='';(p.ln||[]).forEach(function(l){var a=document.createElement('a');a.href=l[1];a.textContent=LNL[L]+' ↗';vL.appendChild(a);});
     strip.innerHTML='';
     p.im.forEach(function(m){
       var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Open image full size');
@@ -367,7 +392,7 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
       b.appendChild(i);b.addEventListener('click',function(){openLb('img/'+m[0]+'.jpg',b);});strip.appendChild(b);
     });
     strip.scrollLeft=0;
-    vCount.textContent=p.s+' · '+p.im.length+' images';
+    vCount.textContent=q.s+' · '+p.im.length+' '+STR[L].images;
     rows.forEach(function(r){r.setAttribute('aria-current',r.dataset.id===id?'true':'false');});
     if(!fromHash){try{history.replaceState(null,'','#'+id);}catch(e){}}
   }
@@ -385,6 +410,24 @@ footer{padding:0 0 36px;font-size:12px;color:var(--muted)}
     });
   });
   var h=location.hash.replace('#','');show(byId[h]?h:D[0].id,true);
+
+  function setLang(l,save){
+    if(!STR[l])l='en';L=l;
+    var S=STR[l];
+    document.documentElement.lang=l;document.documentElement.dir=(l==='ar'?'rtl':'ltr');
+    document.querySelectorAll('[data-i18n]').forEach(function(el){var v=S[el.getAttribute('data-i18n')];if(typeof v==='string')el.innerHTML=v.replace('{n}',D.length);});
+    var tk=document.getElementById('tick');tk.innerHTML='';
+    for(var r=0;r<2;r++)S.ticker.forEach(function(w,i){var s=document.createElement('span');s.innerHTML=w;tk.appendChild(s);var d=document.createElement('span');d.className='dot';d.textContent='●';tk.appendChild(d);});
+    var sv=document.getElementById('svc');sv.innerHTML='';S.svc.forEach(function(w){var li=document.createElement('li');li.innerHTML=w;sv.appendChild(li);});
+    rows.forEach(function(r){var q=tp(byId[r.dataset.id]);r.querySelector('.t').textContent=q.t;r.querySelector('.s').textContent=q.s;});
+    document.querySelectorAll('.langs button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lang===l?'true':'false');});
+    show(cur,true);
+    if(save){try{localStorage.setItem('lang',l);}catch(e){}}
+  }
+  document.querySelectorAll('.langs button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang,true);});});
+  var start='en';try{start=localStorage.getItem('lang')||'';}catch(e){}
+  if(!start){var nl=(navigator.language||'en').slice(0,2);start=(nl==='fr'||nl==='ar')?nl:'en';}
+  if(start!=='en')setLang(start,false);else document.querySelector('.langs button[data-lang="en"]').setAttribute('aria-pressed','true');
 
   // lightbox
   var lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbClose=document.getElementById('lbClose'),last=null;
